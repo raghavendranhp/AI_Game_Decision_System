@@ -11,6 +11,7 @@ class TicTacToeEnv:
         """
         Initializes a new tic-tac-toe game environment.
         """
+        
         #initialize empty string list for board there are nine slots for the 3x3 grid
         self.board = [' ' for _ in range(9)]
         self.current_winner = None
@@ -22,6 +23,7 @@ class TicTacToeEnv:
         Returns:
             list of int: The indices of the empty slots on the board.
         """
+        
         #find all indices containing a space character return these indices as a list of integers
         return [i for i, spot in enumerate(self.board) if spot == ' ']
 
@@ -32,6 +34,7 @@ class TicTacToeEnv:
         Returns:
             bool: True if empty squares exist, False otherwise.
         """
+        
         #check if a space character exists in board return the boolean result of this evaluation
         return ' ' in self.board
 
@@ -42,6 +45,7 @@ class TicTacToeEnv:
         Returns:
             int: The total count of empty squares.
         """
+        
         #count the occurrences of space characters return the total integer count
         return self.board.count(' ')
 
@@ -56,6 +60,7 @@ class TicTacToeEnv:
         Returns:
             bool: True if the move was successful, False otherwise.
         """
+        
         #validate if the designated square is empty update the board and check for a winner
         if self.board[square] == ' ':
             self.board[square] = letter
@@ -75,6 +80,7 @@ class TicTacToeEnv:
         Returns:
             bool: True if the player has won, False otherwise.
         """
+        
         #calculate the row index for the move check if all elements in the row match
         row_ind = square // 3
         row = self.board[row_ind*3:(row_ind+1)*3]
@@ -107,6 +113,7 @@ class TicTacToeEnv:
         Returns:
             str: The joined string of the game board.
         """
+        
         #join the current board into string return string as unique state representation
         return "".join(self.board)
 
@@ -120,6 +127,7 @@ class TicTacToeEnv:
         Returns:
             int: The score of the current board state.
         """
+        
         #assign positive logic score for ai victory assign negative score if opponent wins game
         if self.current_winner == ai_player:
             return 10
@@ -133,6 +141,7 @@ class TicTacToeEnv:
         """
         Resets the board to the initial empty state.
         """
+        
         #reset the board array to empty spaces reset the current winner to none
         self.board = [' ' for _ in range(9)]
         self.current_winner = None

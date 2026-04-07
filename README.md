@@ -2,6 +2,13 @@
 
 This complete codebase provides a Tic-Tac-Toe Game Decision System featuring a Streamlit web interface and a robust AI engine capable of employing varying tactical algorithms. The implementation rigorously follows Python design principles and project constraints.
 
+## Streamlit cloud link
+[streamlit_app](https://gamedecisionsys.streamlit.app/)
+
+
+## Demo 
+![live demo](live_demo.gif)
+
 ## Project Execution Instructions
 
 1. **Prerequisite:** Ensure you have Python 3.10 explicitly installed on your system.

@@ -29,6 +29,7 @@ def handle_click(i):
     Args:
         i (int): The index of the clicked board square.
     """
+    
     #verify the game is active and square available execute human player move utilizing selected position
     env = st.session_state.env
     if not st.session_state.game_over and env.board[i] == ' ':
@@ -51,6 +52,7 @@ def ai_turn():
     """
     Executes the ai turn based on selected algorithm and difficulty.
     """
+    
     #access environment and selected configuration parameters cleanly initialize move variable before logical evaluation blocks
     env = st.session_state.env
     ai = st.session_state.ai_engine
@@ -87,6 +89,7 @@ def reset_game():
     """
     Resets the current game board to allow playing again.
     """
+    
     #call environment specific reset logic method execution toggle game over boolean flag backward properly
     st.session_state.env.reset()
     st.session_state.game_over = False
@@ -95,6 +98,7 @@ def main():
     """
     Main function to render streamlit visual interface completely.
     """
+    
     #configure foundational layout parameters strictly avoiding icons invoke state initialization ensuring backend capability presence
     st.set_page_config(page_title="AI Tic-Tac-Toe", layout="centered")
     initialize_session_state()
@@ -121,6 +125,7 @@ def main():
     grid_container = st.container()
     
     with grid_container:
+        
         #iterate vertically simulating corresponding matrix indices visually inject columns corresponding towards horizontal layout coordinates
         for row in range(3):
             cols = st.columns([1, 1, 1])

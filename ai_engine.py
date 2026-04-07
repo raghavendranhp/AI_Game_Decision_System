@@ -21,6 +21,7 @@ class AIEngine:
         Args:
             ai_letter (str): The designated letter for the ai.
         """
+        
         #store letters for ai and human players initialize q-table and learning parameters
         self.ai_letter = ai_letter
         self.human_letter = 'X' if ai_letter == 'O' else 'O'
@@ -42,6 +43,7 @@ class AIEngine:
         Returns:
             dict: The best move index and its corresponding score.
         """
+        
         #evaluate terminal state and return dictionary the base cases include win loss or draw
         if state.current_winner:
             score = 10 if state.current_winner == self.ai_letter else -10
@@ -68,6 +70,7 @@ class AIEngine:
                 if beta <= alpha:
                     break
             return best
+        
         else:
             #initialize best dictionary for minimizing player iterate through available moves on board
             best = {'position': None, 'score': math.inf}
@@ -98,6 +101,7 @@ class AIEngine:
         Returns:
             int: The chosen move index.
         """
+        
         #call the recursive minimax method with maximizing return the position value from best dictionary
         if len(state.available_moves()) == 9:
             return random.choice([0, 2, 4, 6, 8])
@@ -115,6 +119,7 @@ class AIEngine:
         Returns:
             int: The chosen move index.
         """
+        
         #check for immediate winning move capability simulate move and return if it wins
         for move in state.available_moves():
             state.make_move(move, self.ai_letter)
@@ -157,6 +162,7 @@ class AIEngine:
         Returns:
             float: The q-value, defaulting to zero.
         """
+        
         #check if state exists within the table return corresponding initialized action value correctly
         if state_key not in self.q_table:
             self.q_table[state_key] = {a: 0.0 for a in range(9) if state_key[a] == ' '}
@@ -169,6 +175,7 @@ class AIEngine:
         Args:
             iterations (int): The number of games to simulate.
         """
+        
         #import the environment to simulate learning battles local import avoids cyclical dependency during initialization
         from game_env import TicTacToeEnv
         
@@ -226,6 +233,7 @@ class AIEngine:
             state_history (list): List of (state, action) tuples.
             final_reward (float): The ultimate reward obtained.
         """
+        
         #traverse recorded actions conversely calculating accumulated values apply learning decay utilizing configured engine discount multiplier
         reward = final_reward
         for state_key, action in reversed(state_history):
@@ -245,6 +253,7 @@ class AIEngine:
         Returns:
             int: The chosen move index.
         """
+        
         #decide exploration versus exploitation utilizing boolean parameter adjust artificial exploration chance accordingly upon toggle
         effective_epsilon = self.epsilon if is_trained else 0.8
         state_key = state.get_state_key()
